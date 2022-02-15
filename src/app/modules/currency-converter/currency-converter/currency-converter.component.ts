@@ -4,7 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-currency-converter',
   templateUrl: './currency-converter.component.html',
-  styleUrls: ['./currency-converter.component.sass']
+  styleUrls: ['./currency-converter.component.scss']
 })
 export class CurrencyConverterComponent implements OnInit {
   convert!: FormGroup;
