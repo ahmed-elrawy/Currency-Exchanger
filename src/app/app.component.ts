@@ -13,10 +13,10 @@ export class AppComponent {
 
   }
   
-  ngOnInit(): void {
-   this.service.Latest() .subscribe(res => {
-    
-    console.log(Object.keys(res.rates) )
-  })
-  }
+  // ngOnInit(): void {
+  //  this.service.Latest() .subscribe(res => {
+  //   console.log(res)
+  //   console.log(Object.keys(res.rates) )
+  // })
+  // }
 }

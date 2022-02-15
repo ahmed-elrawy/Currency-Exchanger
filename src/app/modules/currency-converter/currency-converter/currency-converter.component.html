@@ -1,38 +1,54 @@
-<form [formGroup]="convert" (ngSubmit)="onSubmit(convert)">
-  <div>
-    <label>
-      amount:
-      <input formControlName="amount" placeholder="amount" type="number">
-    </label>
-  </div>
-  <div>
-    <label>
-      from:
-      <select formControlName="from" id="allocation-algorithm">
-        <option value="SHA-256">SHA-256</option>
-        <option value="SCRYPT">SCRYPT</option>
-        <option value="ETHASH">ETHASH</option>
-        <option value="CRYPTONIGH">CRYPTONIGHT</option>
-        <option value="X11">X11</option>
-      </select>
-    </label>
-  </div>
-  <div>
-    <label>
-      to:
-      <label>
-        from:
-        <select formControlName="to" id="allocation-algorithm">
-          <option value="SHA-256">SHA-256</option>
-          <option value="SCRYPT">SCRYPT</option>
-          <option value="ETHASH">ETHASH</option>
-          <option value="CRYPTONIGH">CRYPTONIGHT</option>
-          <option value="X11">X11</option>
-        </select>
-      </label>
-    </label>
-  </div>
-  <button type="submit">convert</button>
-</form>
 
-<div><a [routerLink]="['/currency-converter/details']">convert details</a></div>
+
+<div class="row">
+  <div class="container">
+    
+    
+             
+    <div class="test">
+      <form [formGroup]="convert" (ngSubmit)="onSubmit(convert)">
+        <div>
+        
+            <input formControlName="amount" placeholder="amount" type="number" min="1" >
+        </div>
+        <div style="display: inline;">
+          
+            <select formControlName="from" id="allocation-algorithm"   placeholder="amount">
+              <option  *ngFor="let item of rates" [value]="item">{{item}}</option>
+            </select>
+      
+        </div>
+
+
+      <div class="btns-container btns-centered"style="display: inline;">
+        <a (click)="swap(convert)" class="btn add-btn">
+            <i class="material-icons-outlined">add</i>
+            swap
+        </a>
+    </div>
+        <div style="display: inline;">
+        
+            
+              <select formControlName="to" id="allocation-algorithm">
+                <option  *ngFor="let item of rates" [value]="item">{{item}}</option>
+
+              </select>
+        </div>
+        <div class="btns-container btns-centered">
+          <button (click)="swap(convert)" type="submit" class="btn add-btn">
+              <i class="material-icons-outlined">add</i>
+              convert
+          </button>
+      </div>
+    </form>
+    </div>
+      
+        
+    <div><a [routerLink]="['/currency-converter/details']">convert details</a></div> 
+              
+    
+     
+          
+ 
+  </div>
+</div>
