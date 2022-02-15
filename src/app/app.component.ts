@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppService } from './@core/services/app.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Currency-Exchanger';
+
+  constructor(private service:AppService) {
+
+  }
+  
+  ngOnInit(): void {
+   this.service.Latest() .subscribe(res => {console.log(res)})
+  }
 }

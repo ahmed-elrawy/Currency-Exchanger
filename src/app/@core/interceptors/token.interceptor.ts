@@ -19,6 +19,7 @@ export class TokenInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     request = request.clone({
       setHeaders: {
+        access_key: '71352595cb1eb4c72be94991b25ca8bb',
         Accept: 'application/json'
       },
     });
