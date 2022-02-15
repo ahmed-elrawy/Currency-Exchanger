@@ -14,6 +14,9 @@ export class AppComponent {
   }
   
   ngOnInit(): void {
-   this.service.Latest() .subscribe(res => {console.log(res)})
+   this.service.Latest() .subscribe(res => {
+    
+    console.log(Object.keys(res.rates) )
+  })
   }
 }

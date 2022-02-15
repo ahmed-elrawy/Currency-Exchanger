@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-currency-converter',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./currency-converter.component.sass']
 })
 export class CurrencyConverterComponent implements OnInit {
+  convert!: FormGroup;
+  symbols= []
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit() {
+    this.convert = new FormGroup({
+      amount: new FormControl(''),
+      from: new FormControl(''),
+      to: new FormControl('')
+    });
   }
 
+  onSubmit(form: FormGroup) {
+    console.log('Valid?', form.valid);
+    console.log('amount', form.value.amount);
+  
+  }
 }

@@ -1,1 +1,38 @@
-<p>currency-converter works!</p>
+<form [formGroup]="convert" (ngSubmit)="onSubmit(convert)">
+  <div>
+    <label>
+      amount:
+      <input formControlName="amount" placeholder="amount" type="number">
+    </label>
+  </div>
+  <div>
+    <label>
+      from:
+      <select formControlName="from" id="allocation-algorithm">
+        <option value="SHA-256">SHA-256</option>
+        <option value="SCRYPT">SCRYPT</option>
+        <option value="ETHASH">ETHASH</option>
+        <option value="CRYPTONIGH">CRYPTONIGHT</option>
+        <option value="X11">X11</option>
+      </select>
+    </label>
+  </div>
+  <div>
+    <label>
+      to:
+      <label>
+        from:
+        <select formControlName="to" id="allocation-algorithm">
+          <option value="SHA-256">SHA-256</option>
+          <option value="SCRYPT">SCRYPT</option>
+          <option value="ETHASH">ETHASH</option>
+          <option value="CRYPTONIGH">CRYPTONIGHT</option>
+          <option value="X11">X11</option>
+        </select>
+      </label>
+    </label>
+  </div>
+  <button type="submit">convert</button>
+</form>
+
+<div><a [routerLink]="['/currency-converter/details']">convert details</a></div>

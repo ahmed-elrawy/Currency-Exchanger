@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   ApiUrl: 'http://data.fixer.io/api',
+  access_key: '71352595cb1eb4c72be94991b25ca8bb'
 
 };
 

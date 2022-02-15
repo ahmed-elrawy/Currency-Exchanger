@@ -1,6 +1,7 @@
 import {Observable} from 'rxjs';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import {environment as env} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -19,8 +20,7 @@ export class TokenInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     request = request.clone({
       setHeaders: {
-        access_key: '71352595cb1eb4c72be94991b25ca8bb',
-        Accept: 'application/json'
+        access_key: env.access_key,
       },
     });
 
