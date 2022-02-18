@@ -5,6 +5,7 @@ import {CurrencyConverterRoutingModule} from './currency-converter-routing.modul
 import {SharedModule} from '@shared/shared.module';
 import { CurrencyConverterComponent } from './currency-converter/currency-converter.component';
 import { CurrencyDetailsComponent } from '../currency-details/currency-details.component';
+import { CurrencyComponent } from '../currency/currency.component';
 
 
 
@@ -12,11 +13,12 @@ import { CurrencyDetailsComponent } from '../currency-details/currency-details.c
   declarations: [
     CurrencyConverterComponent,
     CurrencyDetailsComponent,
+    CurrencyComponent
 
   ],
   imports: [
     CurrencyConverterRoutingModule,
-    SharedModule
+    SharedModule,
     ]
 })
 export class CurrencyConverterModule {

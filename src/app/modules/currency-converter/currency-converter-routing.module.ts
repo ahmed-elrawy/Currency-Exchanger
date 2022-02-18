@@ -4,6 +4,7 @@ import {NotFoundComponent} from '@shared/components/not-found/not-found.componen
 import {LayoutComponent} from '@shared/components/layout/layout.component';
 import { CurrencyConverterComponent } from './currency-converter/currency-converter.component';
 import { CurrencyDetailsComponent } from '../currency-details/currency-details.component';
+import { CurrencyComponent } from '../currency/currency.component';
 
 
 let children: Routes;
@@ -15,6 +16,10 @@ children = [
   {
     path: 'details',
     component: CurrencyDetailsComponent
+  },
+  {
+    path: 'currency',
+    component:CurrencyComponent
   },
 
   {

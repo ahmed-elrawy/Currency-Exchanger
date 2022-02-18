@@ -1,10 +1,31 @@
 body {
-  font-family: "Lato", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 400; 
   font-size: 1.6rem;
   line-height: 1.7;
   color: $color-grey-dark;
+  // overflow: hidden;
+
   // padding: 3rem;
 
 }
 
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 40px;
+  margin-bottom: 25px;
+}
+
+h1.is-bold,
+h2.is-bold {
+  font-weight: bold;
+  letter-spacing: -2px;
+}
+
+a {
+  text-decoration: none;
+}

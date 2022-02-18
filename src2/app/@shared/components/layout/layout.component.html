@@ -1,0 +1,17 @@
+
+
+<section class="header">
+  <div class="header__logo-box">
+    <img src="../../../../assets/images/banque-misr-logo.png" alt="logo" class="header__logo">
+  </div>
+  <div class="header__text-box">
+    <div class="content-section" [@routeAnim]="prepareRoute(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+    <!-- <h1 class="heading-primary">
+      <span class="heading-primary--main">outdoors</span>
+      <span class="heading-primary--sub">is where life happens</span>
+    </h1> -->
+
+   </div>
+</section>

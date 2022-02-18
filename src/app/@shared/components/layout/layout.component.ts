@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
 import { animate, group, query, style, transition, trigger } from '@angular/animations';
-import { map, Observable, timer } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Observable, timer } from 'rxjs';
+import { map } from 'rxjs/operators'
+
 const baseStyles = style({
   // display: 'block',
   position: 'absolute',
@@ -179,22 +181,22 @@ export class LayoutComponent implements OnInit {
   backgrounds: string[] = [
     'https://images.unsplash.com/photo-1434907652076-85f8401482c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920'
   ]
-
-  loadingBGImage!: boolean;
+  loadingBGImage?: boolean
 
   dateTime?: Observable<Date>
+
 
   constructor() {
 
   }
   
-  ngOnInit(): void {
+
+  ngOnInit() {
     this.dateTime = timer(0, 1000).pipe(
       map(() => {
         return new Date()
       })
     )
-
   }
 
   prepareRoute(outlet: RouterOutlet) {
@@ -229,6 +231,9 @@ export class LayoutComponent implements OnInit {
 
     this.loadingBGImage = false
   }
+
+
+
 
 }
 

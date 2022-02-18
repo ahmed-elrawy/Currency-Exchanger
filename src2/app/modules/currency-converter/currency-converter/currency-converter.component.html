@@ -1,0 +1,57 @@
+
+
+
+<div class="row">
+  <div class="container">
+    
+    
+             
+   
+      <form [formGroup]="convert" (ngSubmit)="onSubmit(convert)">
+        <div class="amount">
+            <input formControlName="amount" placeholder="amount" type="number" min="1" >
+        </div>
+
+        <div class="currency">
+          
+            <select formControlName="from" id="allocation-algorithm"   placeholder="amount">
+              <option  *ngFor="let item of symbols | keyvalue" [value]="item.key">{{item.key}}</option>
+            </select>
+
+    
+              <a (click)="swap(convert)" class="swap">
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M8,10V13H14V18H8V21L2,15.5L8,10M22,8.5L16,3V6H10V11H16V14L22,8.5Z" />
+              </svg>
+              </a>
+          
+          <select formControlName="to" id="allocation-algorithm">
+            <option  *ngFor="let item of symbols | keyvalue" [value]="item.key">{{item.key}}</option>
+          </select>
+
+      
+        </div>
+
+
+
+    
+        <div class="btns-container btns-centered">
+          <button (click)="swap(convert)" type="submit" class="btn add-btn">
+              
+              convert
+          </button>
+      </div>
+    </form>
+      
+    <button class="button">
+      <a  [routerLink]="['/currency-converter/details']">convert details</a> 
+    </button>
+    
+   
+              
+    
+     
+          
+ 
+  </div>
+</div>
