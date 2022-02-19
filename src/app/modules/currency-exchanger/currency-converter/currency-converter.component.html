@@ -1,0 +1,64 @@
+
+
+
+
+
+
+<div class=" container add-bookmark-wrapper  has-blurred-white-bg">
+  <h2 class="is-bold">Currency Exchanger</h2>
+  
+  <form [formGroup]="convert" (ngSubmit)="conver(convert)"  >
+
+      <div class="form-field">
+        <input class="textbox amount" formControlName="amount" placeholder="amount" type="number" min="1">
+      </div>
+
+ 
+      <div class="flex">
+        
+          <!-- <input class="textbox" ngModel #textField="ngModel" name="url" type="url" placeholder="From" required> -->
+          <select formControlName="from" id="allocation-algorithm"   placeholder="from">
+            <option  *ngFor="let item of symbols | keyvalue" [value]="item.key">{{item.key}}</option>
+          </select>
+
+     
+          <a  (click)="swap()" class="">
+            <svg style="width:34px;height:34px" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M8,10V13H14V18H8V21L2,15.5L8,10M22,8.5L16,3V6H10V11H16V14L22,8.5Z" />
+            </svg>
+          </a>
+    
+
+     
+          <!-- <input class="textbox" ngModel #textField="ngModel" name="url" type="url" placeholder="to" required> -->
+          <select formControlName="to" id="allocation-algorithm">
+            <option  *ngFor="let item of symbols | keyvalue" [value]="item.key">{{item.key}}</option>
+          </select>
+      </div>
+
+      <div class="form-field">
+        <button type="submit" class="btn" style="width: 50%; justify-content: center; margin-top  : 7px;" >convert</button>
+    </div>
+
+  </form>
+  <div class="form-field" *ngIf="details">
+    <button class="btn"  (click)="navigate()">detais</button>
+
+</div>
+  <div class="detais" *ngIf="details">
+   <div class="row">
+     <div class="col-1-of-2">
+      <p>date: {{details?.date}}</p>
+      <p>time: {{details?.info?.timestamp}}</p>
+      <p>rate: {{details?.info?.rate}}
+      </p>
+    </div>
+     <div class="col-1-of-2">
+       <p>from: {{details?.query?.from}}</p>
+       <p>to: {{details?.query?.to}}</p>
+       <p>Amount: {{details?.query?.amount}}</p>
+     </div>
+   </div>
+  </div>
+</div>
+

@@ -2,7 +2,7 @@
 //---------------------------- latest endPoint Api ----------------------------//
 
 
-export interface latestData {
+export interface LatestData {
   success: boolean
   timestamp: number
   base: string
@@ -11,8 +11,10 @@ export interface latestData {
 }
 export interface Rates {
  
-  rates:{[key: string]: number}
+  [key: string]: number
 }
+
+
 
 //---------------------------- convert endPoint Api ----------------------------//
 export interface ConvertData {
@@ -34,3 +36,28 @@ export interface Info {
   timestamp: number |string
   rate: number
 }
+
+//---------------------------- Symbols endPoint Api ----------------------------//
+
+export interface Symbols {
+  [key: string]: string
+}
+
+//---------------------------- timeseries endPoint Api ----------------------------//
+
+export interface Timeseries {
+  success: boolean
+  timeseries: boolean
+  start_date: string
+  end_date: string
+  base?: string
+  rates: Rate
+}
+
+export interface Date {
+  [key: string]: number
+}
+export interface Rate {
+  [key: string]: Date
+}
+

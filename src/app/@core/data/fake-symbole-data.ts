@@ -1,6 +1,6 @@
-export interface Symbols {
-  [key: string]: string
-}
+import { Symbols } from "./Api";
+
+
 export let SymbolsData:Symbols = {
  AED: "United Arab Emirates Dirham",
  AFN: "Afghan Afghani",
@@ -171,5 +171,6 @@ export let SymbolsData:Symbols = {
  ZMW: "Zambian Kwacha",
  ZWL: "Zimbabwean Dollar"
 }
+
 
 

@@ -1,0 +1,21 @@
+
+
+
+
+
+
+<div class=" container add-bookmark-wrapper  has-blurred-white-bg">
+  <h2 class="is-bold">Currency Exchanger</h2>
+  <p>{{data?.base}}</p>
+  <p>{{data?.date}}</p>
+  <ul >
+    <li   *ngFor="let item of  data?.rates | keyvalue" [value]="item.key">{{item.key }} : {{item.value}}
+    
+    </li>
+  </ul>
+  <p>{{data?.timestamp}}</p>
+
+
+
+</div>
+
