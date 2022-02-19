@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LatestData, Timeseries } from '@app/@core/data/Api';
 import { AppService } from '@app/@core/services/app.service';
+import { EChartsOption } from 'echarts';
 
 @Component({
   selector: 'app-currency',
@@ -9,25 +10,77 @@ import { AppService } from '@app/@core/services/app.service';
   styleUrls: ['./currency.component.scss']
 })
 export class CurrencyComponent implements OnInit {
-  public data?: LatestData 
-  public timeseries?: Timeseries
-  constructor(
-    private appService: AppService,
-    private route: ActivatedRoute) { }
+  public  data?: LatestData 
+  public  timeseries?: Timeseries
+  public  xAxisData:string[] = []
+  public  USD?:number[] = []
+  public  AUD?:number[] = []
+  public  CAD?:number[] = []
+  public  options!: EChartsOption;
+
+  constructor( private appService: AppService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.appService.LatestEUR().subscribe(res => {
-      this.data = res
-      console.log(res)
-    })
     this.route.params.subscribe( params => {
-      
-    this.appService.timeseries("start:string", "end:string", params['type'], []).subscribe(res => {
-      this.timeseries = res
-      console.log(res)
+    this.appService.Currency( params['type']).subscribe(res => {
+      this.data = res
     })
+    
+    this.appService.timeseries("start:string", "end:string", params['type'], "").subscribe(res => {
+      this.timeseries = res
+        this.xAxisData = Object.keys(this.timeseries?.rates)
+        this.xAxisData.forEach((key, index) => {
+          this.USD?.push(this.timeseries!.rates[key]['USD'])
+          this.AUD?.push(this.timeseries!.rates[key]['AUD'])
+          this.CAD?.push(this.timeseries!.rates[key]['CAD'])
+       });
+      })
     })
 
+    this.options = {
+      legend: {
+        data: ['USD', 'AUD', 'CAD'],
+        align: 'left',
+      },
+      tooltip: {},
+      xAxis: {
+        data: this.xAxisData,
+        silent: false,
+        splitLine: {
+          show: false,
+        },
+      },
+      yAxis: {},
+      series: [
+        {
+          name: 'USD',
+          type: 'bar',
+          data: this.USD,
+          animationDelay: (idx:number) => idx * 10,
+        },
+        {
+          name: 'AUD',
+          type: 'bar',
+          data: this.AUD,
+          animationDelay: (idx:number) => idx * 10 + 100,
+        },
+        {
+          name: 'CAD',
+          type: 'bar',
+          data: this.CAD,
+          animationDelay: (idx:number) => idx * 10 + 100,
+        },
+      ],
+      animationEasing: 'elasticOut',
+      animationDelayUpdate: (idx:number) => idx * 5,
+    };
+
+
+
   }
+
+
+
+
 
 }

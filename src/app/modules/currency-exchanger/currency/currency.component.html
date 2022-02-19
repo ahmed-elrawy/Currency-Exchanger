@@ -1,21 +1,21 @@
 
 
+    <div class="container">
+      <h2>
+        {{data?.base}}
+
+      </h2>
+      <div class="row">
+        <div class="col-1-of-2">
+          <p>date: {{data?.date}}</p>
+        </div>
+        <div class="col-1-of-2">
+          <option  *ngFor="let item of data?.rates | keyvalue" [value]="item.key">
+            <p>{{item.key}}: {{item.value}}</p>
+          </option>
+        </div>
+      </div>
+      <div echarts [options]="options" class="demo-chart"></div>
 
 
-
-
-<div class=" container add-bookmark-wrapper  has-blurred-white-bg">
-  <h2 class="is-bold">Currency Exchanger</h2>
-  <p>{{data?.base}}</p>
-  <p>{{data?.date}}</p>
-  <ul >
-    <li   *ngFor="let item of  data?.rates | keyvalue" [value]="item.key">{{item.key }} : {{item.value}}
-    
-    </li>
-  </ul>
-  <p>{{data?.timestamp}}</p>
-
-
-
-</div>
 

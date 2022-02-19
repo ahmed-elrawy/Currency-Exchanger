@@ -16,15 +16,18 @@ children = [
   },
   {
     path: 'convert',
-    component: CurrencyConverterComponent
+    component: CurrencyConverterComponent,
+    data: { tab: 1 }
   },
   {
     path: 'details/:from/:to/:amount',
-    component: CurrencyDetailsComponent
+    component: CurrencyDetailsComponent,
+    data: { tab: 2 }
   },
   {
     path: 'currency/:type',
-    component:CurrencyComponent
+    component:CurrencyComponent,
+    data: { tab: 3 }
   },
 
   {

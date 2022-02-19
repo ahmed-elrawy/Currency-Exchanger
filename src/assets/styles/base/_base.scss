@@ -21,6 +21,10 @@ html, body {
   
 
 }
+// reset
+a, button /* &c... */ {
+  all: unset;
+}
 
 
 ::-webkit-scrollbar {
@@ -41,3 +45,4 @@ html, body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
+

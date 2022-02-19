@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment as env} from '../../../environments/environment';
-import { Observable, of, Subject} from 'rxjs';
+import { Observable, of} from 'rxjs';
 import {ConvertData, LatestData, Symbols, Timeseries } from '../data/Api';
 import { SymbolsData } from '../data/fake-symbole-data';
 import { latestEUR, latestUSD } from '../data/fake-latest-data';
@@ -31,6 +31,11 @@ constructor(private http: HttpClient) {
   LatestUSD(): Observable<LatestData> {
     return of(latestUSD)
   }
+
+  Currency(currency:string): Observable<LatestData> {
+     let param = currency == "USD" ? latestUSD : latestEUR;
+    return of(param)
+  }
 //---------------------------- LatestEUR endPoint Api ----------------------------//
 
   LatestEUR(): Observable<LatestData> {
@@ -46,7 +51,7 @@ constructor(private http: HttpClient) {
 
 //---------------------------- timeseries endPoint Api ----------------------------//
 
-  timeseries(start:string, end:string, base:string, symbols?:string[]):Observable<Timeseries> {
+  timeseries(start:string, end:string, base:string, symbols?:string):Observable<Timeseries> {
     // return this.http.get<any>(`${env.ApiUrl}/symbols?access_key=${env.access_key}&start_date=${start}&end_date=${end}&base=${base}&symbols=${symbols}`)
     const times = timeseries;
     times.base = base

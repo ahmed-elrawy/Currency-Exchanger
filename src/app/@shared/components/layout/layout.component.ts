@@ -178,10 +178,6 @@ const baseStyles = style({
 })
 export class LayoutComponent implements OnInit {
 
-  backgrounds: string[] = [
-    'https://images.unsplash.com/photo-1434907652076-85f8401482c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920'
-  ]
-  loadingBGImage?: boolean
 
   dateTime?: Observable<Date>
 
@@ -207,30 +203,9 @@ export class LayoutComponent implements OnInit {
     }
   }
 
-  async changeBGImage():Promise<any> {
-    this.loadingBGImage = true
+ 
 
-    const result = await fetch('https://source.unsplash.com/random/1920x1080', {
-      method: 'HEAD'
-    })
 
-    const alreadyGot = this.backgrounds.includes(result.url)
-    if (alreadyGot) {
-      // this is the same image as we currently have, so re-run the function
-      return this.changeBGImage()
-    }
-
-    this.backgrounds.push(result.url)
-  }
-
-  onBGImageLoad(imgEvent: Event) {
-    // BG image has loaded, now remove the old BG image from the backgrounds array
-    const imgElement = imgEvent.target as HTMLImageElement
-    const src = imgElement.src
-    this.backgrounds = this.backgrounds.filter(b => b === src)
-
-    this.loadingBGImage = false
-  }
 
 
 

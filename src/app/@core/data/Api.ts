@@ -54,10 +54,12 @@ export interface Timeseries {
   rates: Rate
 }
 
-export interface Date {
-  [key: string]: number
-}
+
 export interface Rate {
   [key: string]: Date
+}
+
+export interface Date {
+  [key: string]: number
 }
 

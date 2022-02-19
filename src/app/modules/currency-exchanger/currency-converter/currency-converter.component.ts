@@ -16,19 +16,16 @@ export class CurrencyConverterComponent implements OnInit {
   symbols : Symbols= {}
 
   details?: ConvertData
-  // from:string;
-  // to?:string
-
+ 
   constructor(private service:AppService, private router: Router) {
 
   }
   
 
   ngOnInit(): void {
-    console.log(this.format_time(1519328414))
 
     this.convert = new FormGroup({
-      amount: new FormControl(''),
+      amount: new FormControl('1'),
       from: new FormControl(''),
       to: new FormControl('')
     });
@@ -39,9 +36,7 @@ export class CurrencyConverterComponent implements OnInit {
     // })
 
     this.service.symbols().subscribe(res => {
-      console.log(res)
        this.symbols = res
-      console.log(this.symbols)
 
       //   console.log(this.symbols['AMD'])
     })
@@ -59,13 +54,7 @@ export class CurrencyConverterComponent implements OnInit {
       res.info.timestamp = this.format_time(+res.info.timestamp) //change timestamp to time
       res.query.from = this.symbols[res.query.from]  //full name of currency
       res.query.to = this.symbols[res.query.to]
-
-      this.details = res
-
-     
-
-      console.log(res)
-      
+      this.details = res      
     })
   
   }

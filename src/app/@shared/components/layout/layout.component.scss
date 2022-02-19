@@ -1,79 +1,56 @@
-
-
-.app-wrapper {
-  display: flex;
-  flex-direction: column;
-
-  height: 100%;
-}
-
 .bg-img {
   position: fixed;
   background:
       linear-gradient(rgba(131, 134, 136, 0.45),rgba(21, 22, 22, 0.65)),
-      url(    'https://images.unsplash.com/photo-1434907652076-85f8401482c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920') no-repeat center center fixed;
+      url(    '../../../../assets/images/pexels-dmitry-demidov-3790639.jpg') no-repeat center center fixed;
 
   height: 100%;
   width: 100%;
-  
-  // object-fit: cover;
-  
   overflow-x: scroll;
   overflow-x: hidden;
-
-  
-//   .bg-image {
-//   /* The image used */
-//   // background: url(') no-repeat center center fixed; 
-
-  
-//   /* Add the blur effect */
-  
-  
-//   /* Full height */
-//   height: 100%; 
-  
-//   /* Center and scale the image nicely */
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   background-size: cover;
-// }
-}
-
-
-.logo {
-display: flex;
-align-items: center;
-margin: auto;
-}
-
-.top-section {
-  // background-color: aquamarine;
-  text-align: center;
-
-  padding: 1rem 0;
-
-  h1 {
-      font-size: 8rem;
-      font-weight: bold;
-      color: #f5f5f5;
-      text-shadow: 0px 1px 7px rgba(black, 0.1);
+  .app-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
-  h2 {
-      font-size: 1.5rem;
-      color: white;
-      text-shadow: 0px 1px 4px rgba(black, 0.1);
-  }
+  .logo {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    .top-section {
+      text-align: center;
+    
+      padding: 1rem 0;
+    
+      h1 {
+          font-size: 8rem;
+          font-weight: bold;
+          color: #f5f5f5;
+          text-shadow: 0px 1px 7px rgba(black, 0.1);
+      }
+    
+      h2 {
+          font-size: 1.5rem;
+          color: white;
+          text-shadow: 0px 1px 4px rgba(black, 0.1);
+      }
+    }
+    }
+ 
+    .content-section {
+      flex-grow: 1;
+    }
+
 }
 
-.content-section {
-  // background-color: cadetblue;
-  flex-grow: 1;
-}
+
+
+
+
+
 
 .bottom-section {
-  // background-color: coral;
   display: flex;
   position: fixed;
   bottom: 0;
@@ -84,24 +61,6 @@ margin: auto;
   }
 }
 
-.change-bg-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 10px;
-
-  background: rgba(black, 0.1);
-  color: rgba(white, 0.7);
-
-  &:hover {
-      background: rgba(black, 0.3);
-      color: white;
-  }
-
-  &:active {
-      transform: translateY(1px);
-  }
-}
 
 
 @media screen and (max-width: 480px) {

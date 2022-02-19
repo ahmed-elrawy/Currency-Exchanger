@@ -3,48 +3,33 @@ import { ActivatedRoute } from '@angular/router';
 import { ConvertData, Symbols } from '@app/@core/data/Api';
 import { SymbolsData } from '@app/@core/data/fake-symbole-data';
 import { AppService } from '@app/@core/services/app.service';
-import { map, Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-currency-details',
   templateUrl: './currency-details.component.html',
-  styleUrls: ['./currency-details.component.scss']
+  styleUrls: ['./currency-details.component.scss'],
+  
 })
 export class CurrencyDetailsComponent implements OnInit {
-  details?: ConvertData
-  symbols : Symbols= SymbolsData
+  public details?: ConvertData
+  public symbols : Symbols= SymbolsData
 
-
-    constructor(
-      private service: AppService,
-      private route: ActivatedRoute) {
-       
-  }
-
-
+  constructor(private service: AppService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
 
     this.route.params.subscribe( params => {
-    
-  console.log((params['to']))
       this.service.convert(params['from'],params['to'],params['amount']).pipe(
         map( res => {
           res.info.timestamp = this.format_time(+res.info.timestamp) //change timestamp to time
           res.query.from = this.symbols[res.query.from]  //full name of currency
           res.query.to = this.symbols[res.query.to]
            return  res
-        })
-      ).subscribe( (res:ConvertData) => { 
-       this.details = res
-        console.log(res)
-     
+        })).subscribe( (res:ConvertData) => { 
+         this.details = res     
       })
-
     })
-
-
-  
   }
 
   format_time(s:number):string {
@@ -54,6 +39,5 @@ export class CurrencyDetailsComponent implements OnInit {
     });
     return dtFormat.format(new Date(s * 1e3));
   }
-
 
 }

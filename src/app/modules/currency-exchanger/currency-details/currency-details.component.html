@@ -1,25 +1,15 @@
 
-<div class="todos-wrapper">
+<div class="wrapper">
     <div class="container">
-
-        <div class="todo-item" >
-            <div class="check-box">
-                <i class="material-icons-outlined">check</i>
-            </div>
-            <p class="todo-text">ddd</p>
-        
-            <div class="todo-item-actions" (click)="$event.stopPropagation()">
-                <div class="btn todo-item-action-btn" >
-                    <i class="material-icons">edit</i>
-                </div>
-                <div class="btn todo-item-action-btn" >
-                    <i class="material-icons">delete</i>
-                </div>
-            </div>
+        <h4> {{details?.query?.from}}  to   {{details?.query?.to}}</h4>
+        <p>date: {{details?.date}}</p>
+        <h3>result: {{details?.result}}</h3>
      
-   
-
+            <div class="btn " >
+                <a routerLink="/currency-exchanger/convert">back to convert</a>
+            </div>
         
     </div>
 </div> 
+
 
