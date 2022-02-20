@@ -14,8 +14,12 @@ export class CurrencyConverterResolver implements Resolve<Symbols>{
   constructor(private Service: AppService ,private router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):  Observable<Symbols>  {
-    console.log("resolver is work ",)
-   return this.Service.symbols()
+    console.log("resolver is working ")
+   return this.Service.symbols().pipe(
+     catchError((err) => {
+       return EMPTY
+     })
+   )
   }
  
  

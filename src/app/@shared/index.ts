@@ -16,7 +16,5 @@ export const components: any[] = [
   LayoutComponent,
   NavbarComponent,
   TabsComponent,
-  
-
 ];
 

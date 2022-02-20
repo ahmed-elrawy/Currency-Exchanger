@@ -2,19 +2,21 @@
 
     <div class="container">
       <h2>
-        {{data?.base}}
+        {{latestData?.base}}
 
       </h2>
       <div class="row">
         <div class="col-1-of-2">
-          <p>date: {{data?.date}}</p>
+          <p>date: {{latestData?.date}}</p>
         </div>
         <div class="col-1-of-2">
-          <option  *ngFor="let item of data?.rates | keyvalue" [value]="item.key">
+          <option  *ngFor="let item of latestData?.rates | keyvalue" [value]="item.key">
             <p>{{item.key}}: {{item.value}}</p>
           </option>
         </div>
       </div>
+
+      <!-- NGX Chart  -->
       <div echarts [options]="options" class="demo-chart"></div>
 
 

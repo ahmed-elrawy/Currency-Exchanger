@@ -4,9 +4,9 @@ import {environment as env} from '../../../environments/environment';
 import { Observable, of} from 'rxjs';
 import {ConvertData, LatestData, Symbols, Timeseries } from '../data/Api';
 import { SymbolsData } from '../data/fake-symbole-data';
-import { latestEUR, latestUSD } from '../data/fake-latest-data';
+import { latestData, latestEUR, latestUSD } from '../data/fake-latest-data';
 import { Convert } from '../data/fake-conver-data';
-import { timeseries, timeseriesUSD } from '../data/fake-Timeseries-data';
+import { timeseriesEUD, timeseriesUSD } from '../data/fake-Timeseries-data';
 
 
 @Injectable({
@@ -53,7 +53,7 @@ constructor(private http: HttpClient) {
 
   timeseries(start:string, end:string, base:string, symbols?:string):Observable<Timeseries> {
     // return this.http.get<any>(`${env.ApiUrl}/symbols?access_key=${env.access_key}&start_date=${start}&end_date=${end}&base=${base}&symbols=${symbols}`)
-    const times = (base == "USD")?timeseriesUSD: timeseries; //timeseriesUSD
+    const times = (base == "USD")?timeseriesUSD: timeseriesEUD; //timeseriesUSD
     // times.base = base
     return of(times)
   }
@@ -67,6 +67,9 @@ constructor(private http: HttpClient) {
     convert.query.from = from
     convert.query.to = to
     convert.query.to = to
+
+ 
+    convert.result = latestData.rates[from]  * +amount // fake result
     convert.info.timestamp =1519328414      
     return of(convert)
   }

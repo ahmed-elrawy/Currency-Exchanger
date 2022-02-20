@@ -20,7 +20,6 @@ export class TokenInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     request = request.clone({
       setHeaders: {
-        access_key: env.access_key,
       },
     });
 

@@ -1,15 +1,15 @@
 .tabs {
     display: flex;
-    gap: 14px;
+    gap: 1.4rem;
 
     background-color: rgba(white, 0.25);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(.3rem);
 
-    border-radius: 12px;
+    border-radius: 1.2rem;
     
-    padding: 10px;
-    margin: 12px;
-    margin-top: 50px;
+    padding: 1rem;
+    margin: 1.2rem;
+    margin-top: 5rem;
 }
 
 .tab {
@@ -23,7 +23,7 @@
 .tab-tile {
     display: flex;
     
-    padding: 18px;
+    padding: 1.8rem;
 
     cursor: pointer;
     
@@ -84,7 +84,7 @@
     transform: scale(1.1);
     border-radius: 50%;
 
-    box-shadow: 0px 7px 17px rgba(black, 0.12);
+    box-shadow: 0 .7rem 1.7rem rgba(black, 0.12);
 
     transition-delay: 0.2s;
 }
@@ -99,11 +99,11 @@
 .tab::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -1rem;
     left: 0;
     right: 0;
 
-    height: 3px;
+    height: .3rem;
     width: 50%;
 
     margin: auto;

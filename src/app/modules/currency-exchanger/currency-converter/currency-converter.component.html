@@ -1,13 +1,7 @@
-
-
-
-
-
-
 <div class=" container  has-blurred-white-bg">
   <h2 class="is-bold">Currency Exchanger</h2>
   
-  <form [formGroup]="convert" (ngSubmit)="conver(convert)"  >
+  <form [formGroup]="convert" (ngSubmit)="conver(convert)">
 
       <div class="form-field">
         <input class="textbox amount" formControlName="amount" placeholder="amount" type="number" min="1">
@@ -16,9 +10,8 @@
  
       <div class="flex">
         
-          <select formControlName="from" id="allocation-algorithm"   placeholder="from">
+          <select formControlName="from"   placeholder="from">
             <option hidden value="" disabled selected>From</option>
-
             <option  *ngFor="let item of symbols | keyvalue" [value]="item.key">{{item.key}}</option>
           </select>
 
@@ -30,16 +23,14 @@
           </a>
     
 
-     
-          <select formControlName="to" id="allocation-algorithm">
+          <select formControlName="to" >
             <option hidden value="" disabled selected>To</option>
-
             <option  *ngFor="let item of symbols | keyvalue" [value]="item.key">{{item.key}}</option>
           </select>
       </div>
 
       <div class="form-field">
-        <button type="submit" class="btn" style="width: 50%; justify-content: center; margin-top  : 7px;" >convert</button>
+        <button [disabled]="convert.invalid" type="submit" class="btn" >convert</button>
     </div>
 
   </form>
@@ -49,18 +40,8 @@
 </div>
   <div class="detais" *ngIf="details">
    <div class="row">
-     <div class="col-1-of-2">
-      <p>date: {{details?.date}}</p>
-      
-      <p>time: {{details?.info?.timestamp}}</p>
-      <p>rate: {{details?.info?.rate}}
-      </p>
-    </div>
-     <div class="col-1-of-2">
-       <p>from: {{details?.query?.from}}</p>
-       <p>to: {{details?.query?.to}}</p>
-       <p>Amount: {{details?.query?.amount}}</p>
-     </div>
+     <h4>result: {{details?.result}}</h4>
+ 
    </div>
   </div>
 </div>

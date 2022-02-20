@@ -1,6 +1,6 @@
 import { Timeseries } from "./Api";
 
-export const timeseries: Timeseries ={
+export const timeseriesEUD: Timeseries ={
   "success": true,
   "timeseries": true,
   "start_date": "2012-05-01",
