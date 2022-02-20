@@ -6,7 +6,7 @@ import {ConvertData, LatestData, Symbols, Timeseries } from '../data/Api';
 import { SymbolsData } from '../data/fake-symbole-data';
 import { latestEUR, latestUSD } from '../data/fake-latest-data';
 import { Convert } from '../data/fake-conver-data';
-import { timeseries } from '../data/fake-Timeseries-data';
+import { timeseries, timeseriesUSD } from '../data/fake-Timeseries-data';
 
 
 @Injectable({
@@ -53,8 +53,8 @@ constructor(private http: HttpClient) {
 
   timeseries(start:string, end:string, base:string, symbols?:string):Observable<Timeseries> {
     // return this.http.get<any>(`${env.ApiUrl}/symbols?access_key=${env.access_key}&start_date=${start}&end_date=${end}&base=${base}&symbols=${symbols}`)
-    const times = timeseries;
-    times.base = base
+    const times = (base == "USD")?timeseriesUSD: timeseries; //timeseriesUSD
+    // times.base = base
     return of(times)
   }
 

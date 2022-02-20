@@ -5,6 +5,7 @@ import {LayoutComponent} from '@shared/components/layout/layout.component';
 import { CurrencyConverterComponent } from './currency-converter/currency-converter.component';
 import { CurrencyComponent } from './currency/currency.component';
 import { CurrencyDetailsComponent } from './currency-details/currency-details.component';
+import { CurrencyConverterResolver } from '@app/@core/resolver/currency-converter-resolver.service';
 
 
 let children: Routes;
@@ -17,6 +18,9 @@ children = [
   {
     path: 'convert',
     component: CurrencyConverterComponent,
+    resolve: {
+      resolve: CurrencyConverterResolver
+    },
     data: { tab: 1 }
   },
   {

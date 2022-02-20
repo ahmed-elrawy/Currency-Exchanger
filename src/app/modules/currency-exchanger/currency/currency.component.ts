@@ -13,7 +13,7 @@ export class CurrencyComponent implements OnInit {
   public  data?: LatestData 
   public  timeseries?: Timeseries
   public  xAxisData:string[] = []
-  public  USD?:number[] = []
+  public  base?:number[] = []
   public  AUD?:number[] = []
   public  CAD?:number[] = []
   public  options!: EChartsOption;
@@ -28,9 +28,12 @@ export class CurrencyComponent implements OnInit {
     
     this.appService.timeseries("start:string", "end:string", params['type'], "").subscribe(res => {
       this.timeseries = res
+      console.log(res)
         this.xAxisData = Object.keys(this.timeseries?.rates)
         this.xAxisData.forEach((key, index) => {
-          this.USD?.push(this.timeseries!.rates[key]['USD'])
+          if(res.base== "EUR") {
+            this.base?.push(this.timeseries!.rates[key]['USD'])
+          } else {this.base?.push(this.timeseries!.rates[key]['EUR'])}
           this.AUD?.push(this.timeseries!.rates[key]['AUD'])
           this.CAD?.push(this.timeseries!.rates[key]['CAD'])
        });
@@ -55,7 +58,7 @@ export class CurrencyComponent implements OnInit {
         {
           name: 'USD',
           type: 'bar',
-          data: this.USD,
+          data: this.base,
           animationDelay: (idx:number) => idx * 10,
         },
         {

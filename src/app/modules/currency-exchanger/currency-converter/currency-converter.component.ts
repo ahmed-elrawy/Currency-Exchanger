@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConvertData, Symbols } from '@app/@core/data/Api';
 import { AppService } from '@app/@core/services/app.service';
 import { map, of } from 'rxjs';
@@ -17,7 +17,8 @@ export class CurrencyConverterComponent implements OnInit {
 
   details?: ConvertData
  
-  constructor(private service:AppService, private router: Router) {
+  constructor(private service:AppService, private router: Router, private activatedRoute: ActivatedRoute,
+    ) {
 
   }
   
@@ -35,12 +36,13 @@ export class CurrencyConverterComponent implements OnInit {
       
     // })
 
-    this.service.symbols().subscribe(res => {
-       this.symbols = res
-
-      //   console.log(this.symbols['AMD'])
+    this.activatedRoute.data.pipe(
+      map((data) => {
+       return data
+       })
+      ).subscribe(res =>{//featch tha data by Resolver 
+      this.symbols = res['resolve']     
     })
-
   }
 
   conver(form: FormGroup):void {
